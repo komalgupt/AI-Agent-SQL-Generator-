@@ -1,7 +1,7 @@
 import google.generativeai as genai
 
 # Configure Google Gemini API
-genai.configure(api_key="AIzaSyAp46yDULu_nkX6TyuLsm9oQKeL8vnFzW0")
+genai.configure(api_key="your_API_Key")  #past your gemini API key here 
 
 def convert_to_sql(user_query):
     model = genai.GenerativeModel(model_name="gemini-1.5-pro")
