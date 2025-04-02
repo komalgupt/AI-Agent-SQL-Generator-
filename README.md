@@ -7,7 +7,6 @@ This project is an AI-powered agent that translates natural language queries int
 - **Natural Language to SQL Conversion:** Uses Google Gemini AI to convert user queries into SQL.
 - **Query Execution & Result Processing:** Executes SQL queries on PostgreSQL and returns results in JSON or tabular format.
 - **Error Handling & Optimization:** Detects incorrect or ambiguous queries, suggests corrections, and optimizes performance.
-- **Security Measures:** Protects against SQL injection attacks.
 - **Web Interface:** Provides a user-friendly interface using Flask to submit queries and view results.
 
 ## Requirements
@@ -27,6 +26,7 @@ AI_SQL_Agent/
 │   └── index.html        # Frontend UI for user interaction
 |-- static/
 |   └── styles.css
+|-- DB_created_in_postgre.csv   #database which have been created in postgre SQL inserted here for reference purpose 
 └── requirement.txt            
 ```
 
