@@ -39,13 +39,23 @@ AI_SQL_Agent/
 
 2. **Set Up PostgreSQL Database:**
    - Ensure PostgreSQL is installed and running.
-   - Update `DATABASE_URL` in `database.py` with your database credentials.
-   
+   - Update `DATABASE_URL` in `database.py` with your database credentials:
+     ```python
+     DATABASE_URL = "postgresql://your_username:your_password@localhost/your_database"
+     ```
+
 3. **Run the Application:**
    ```sh
    python app.py
    ```
    The application will start on `http://127.0.0.1:5000/`.
+
+## Security Notice  
+⚠️ **Important:** This repository does not contain actual API keys or database credentials. Before running the project, update the following:  
+
+1. Replace `"your_api_key"` in `model.py` with your actual Google Gemini API key.  
+2. Update the database connection string in `database.py` as shown above.  
+3. Consider using environment variables (`.env` file) for enhanced security instead of hardcoding credentials in the script.  
 
 ## Usage Guide
 - **Enter a query in natural language** (e.g., "Show me employees who joined after 2020").
@@ -59,4 +69,5 @@ If you plan to deploy the application, you can use cloud platforms like AWS, Azu
 Feel free to contribute by submitting pull requests. Ensure your code is well-documented and follows best practices.
 
 ## License
-This project is open-source and available
+This project is open-source and available.
+
