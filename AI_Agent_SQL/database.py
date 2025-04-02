@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, text
 import pandas as pd
 
 # 🔹 Update with actual database details
-DATABASE_URL = "postgresql://postgres:1234@localhost:5432/mydb"
+DATABASE_URL = "postgresql://user:password@localhost/dbname" #replace with your postgre credential 
 
 # ✅ Create SQLAlchemy Engine
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
