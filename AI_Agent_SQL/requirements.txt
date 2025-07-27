@@ -1,4 +1,0 @@
-flask
-torch
-psycopg2
-pandas
