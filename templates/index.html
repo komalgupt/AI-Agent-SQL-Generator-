@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SQL Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Background Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Container Box */
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: rgba(42, 42, 58, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Introduction Box */
+        .intro {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 188, 212, 0.2);
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        /* Input and Button */
+        input {
+            width: 85%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #00bcd4;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            background: #333;
+            color: #fff;
+        }
+
+        button {
+            background: #00bcd4;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #008c9e;
+        }
+
+        /* SQL Output Box */
+        pre {
+            background: #252530;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            text-align: left;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #00bcd4;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Introduction Section -->
+        <div class="intro">
+            <h1>Welcome to AI SQL Generator</h1>
+            <p>This AI-powered agent converts natural language queries into SQL commands. 
+               Simply enter your query and let AI handle the rest!</p>
+        </div>
+
+        <!-- Query Input Section -->
+        <input type="text" id="queryInput" placeholder="Enter natural language query">
+        <button onclick="sendQuery()">Generate SQL</button>
+
+        <!-- SQL Query Output -->
+        <h3>Generated SQL Query:</h3>
+        <pre id="sqlOutput"></pre>
+
+        <!-- Results Display -->
+        <h3>Results:</h3>
+        <div id="resultsTable"></div>
+    </div>
+
+    <script>
+        function sendQuery() {
+            let query = document.getElementById("queryInput").value;
+            fetch("/query", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("sqlOutput").innerText = data.sql_query;
+                document.getElementById("resultsTable").innerHTML = data.table;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
